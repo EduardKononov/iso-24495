@@ -1,0 +1,4 @@
+interface:
+  display_name: "Technical explanation"
+  short_description: "Explain code and technical ideas to a software developer"
+  default_prompt: "Use $technical-explanation when a reply explains how something works or why it is built that way."

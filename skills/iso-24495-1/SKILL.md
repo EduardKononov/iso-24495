@@ -98,8 +98,7 @@ Before outputting user-facing text, audit against these checks:
 ## Domain Extension Triggers
 
 Automatically activate and combine the appropriate domain extension alongside ISO 24495-1:
-- **`iso-24495-3` (Science & Technical):** Activate when handling code, software architecture, technical documentation, algorithm explanations, or scientific data. Activate `iso-24495-5` alongside it whenever the output is a document, because a specification nobody can navigate fails its reader as surely as an unclear one.
-- **`iso-24495-5` (Document Design, provisional):** Activate when producing complex multi-section documents (reports, specifications, guides, contracts) where layout, visual hierarchy, and navigation aids shape readability.
+- **`technical-explanation`:** Activate when a reply explains how code or a technical idea works, or why it is built that way.
 
 ## Worked examples
 
