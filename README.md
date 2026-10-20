@@ -1,10 +1,10 @@
-# ISO 24495 Plain Language Skills
+# Plain language skills
 
-Two [Agent Skills](https://code.claude.com/docs/en/skills) that support plain language writing. They apply principles inspired by the ISO 24495 *Plain language* series.
+Two [Agent Skills](https://code.claude.com/docs/en/skills) that support plain language writing.
 
 The skills are plain `SKILL.md` files with agent-neutral wording. Any tool that reads the Agent Skills format can use them.
 
-This repository also packages them as a Claude Code plugin with an **ISO 24495 output style** (`claude/output-styles/iso-24495.md`). Select the style with `/output-style` to hold every response to the core rules without relying on skill activation.
+This repository also packages them as a Claude Code plugin with a **Response style** output style (`claude/output-styles/response-style.md`). Select the style with `/output-style` to hold every response to the core rules without relying on skill activation.
 
 ## Skills
 
@@ -53,19 +53,19 @@ codex plugin add iso-24495-plain-language@iso-24495
 
 Every skill carries `agents/openai.yaml`, which gives Codex its display name, its short description, and the prompt Codex offers for it. Invoke a skill by name, as in `$plain-language`, or ask for it in words.
 
-Codex has no output style, so the same rules are a skill there: `iso-24495-style` holds the output style word for word, and a test keeps the two identical. It lives in `codex-skills/` rather than `skills/`, because Claude Code scans `skills/` and would otherwise offer a skill its output style already covers. Codex reads both directories, named in `.codex-plugin/plugin.json`.
+Codex has no output style, so the same rules are a skill there: `response-style` holds the output style word for word. It lives in `codex-skills/` rather than `skills/`, because Claude Code scans `skills/` and would otherwise offer a skill its output style already covers. Codex reads both directories, named in `.codex-plugin/plugin.json`.
 
 Name the skill in your `AGENTS.md` to apply it to every response:
 
 ```
-Apply `iso-24495-style` to every response.
+Apply `response-style` to every response.
 ```
 
-Put that in your project's `AGENTS.md` or in `~/.codex/AGENTS.md`. An `AGENTS.md` inside a plugin is ignored, so a plugin cannot apply itself. For a single reply, invoke `$iso-24495-style` instead.
+Put that in your project's `AGENTS.md` or in `~/.codex/AGENTS.md`. An `AGENTS.md` inside a plugin is ignored, so a plugin cannot apply itself. For a single reply, invoke `$response-style` instead.
 
 ## Installation (Cursor)
 
-Cursor loads this repository as a plugin from `.cursor-plugin/plugin.json`. The manifest points at the two shared skills in `skills/`. Cursor has no output style, so `cursor/rules/iso-24495.mdc` is an always-on rule. Once the plugin is installed, it applies the output style to every response. A test keeps that rule identical to `claude/output-styles/iso-24495.md`.
+Cursor loads this repository as a plugin from `.cursor-plugin/plugin.json`. The manifest points at the two shared skills in `skills/`. Cursor has no output style, so `cursor/rules/response-style.mdc` is an always-on rule. Once the plugin is installed, it applies the output style to every response.
 
 To try the plugin locally, copy this repository into `~/.cursor/plugins/local/iso-24495-plain-language`, then reload Cursor. A symlink to this repository is skipped, because Cursor only follows a symlink whose target stays inside that local folder.
 

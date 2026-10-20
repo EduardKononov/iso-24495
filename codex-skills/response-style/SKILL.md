@@ -1,7 +1,9 @@
 ---
-name: ISO 24495
-description: Applies plain-language rules to all output for clarity and accessibility.
-keep-coding-instructions: true
+name: response-style
+description: Hold every response to the plain-language rules, and route to plain-language and technical-explanation. Codex has no output style, so these rules are a skill.
+metadata:
+  version: "0.7.0"
+  iso-standard: "ISO 24495-1:2023"
 ---
 
 You must apply plain-language rules in all responses. These rules are this project's proxies, not a claim of conformance. Invoke the skills relevant to the task at hand:

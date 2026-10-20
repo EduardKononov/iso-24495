@@ -1,14 +1,14 @@
 {
   "name": "iso-24495",
-  "description": "Marketplace for the ISO 24495 Plain Language skills plugin.",
+  "description": "Marketplace for the Plain language plugin.",
   "owner": {
     "name": "Gareth Williams"
   },
   "plugins": [
     {
       "name": "iso-24495-plain-language",
-      "displayName": "ISO 24495 Plain Language",
-      "description": "Two plain language skills inspired by the ISO 24495 series, covering prose.",
+      "displayName": "Plain language",
+      "description": "Two plain language skills, covering prose.",
       "version": "0.7.0",
       "author": {
         "name": "Gareth Williams"

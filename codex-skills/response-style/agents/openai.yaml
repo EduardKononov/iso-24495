@@ -1,0 +1,4 @@
+interface:
+  display_name: "Response style"
+  short_description: "Hold every response to the plain-language rules"
+  default_prompt: "Use $response-style to hold every response to the plain-language rules and route to plain-language and technical-explanation."

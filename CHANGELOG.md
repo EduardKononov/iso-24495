@@ -1,12 +1,12 @@
 # Changelog
 
-All notable changes to the ISO 24495 Plain Language plugin. Versions follow [Semantic Versioning](https://semver.org). Installs are pinned to tagged releases via the marketplace manifest.
+All notable changes to the Plain language plugin. Versions follow [Semantic Versioning](https://semver.org). Installs are pinned to tagged releases via the marketplace manifest.
 
 ## [Unreleased]
 
 ### Added
 
-- **A Cursor plugin.** `.cursor-plugin/plugin.json` loads the two shared skills. `cursor/rules/iso-24495.mdc` applies the output style to every response, and carries the same text as the style.
+- **A Cursor plugin.** `.cursor-plugin/plugin.json` loads the two shared skills. `cursor/rules/response-style.mdc` applies the output style to every response, and carries the same text as the style.
 - **Worked examples live in the skills.** The output style, the Codex style skill and the Cursor rule no longer carry them. Each writing skill holds its own examples, with the same note in front. Example 18 is also in the core skill.
 
 ### Changed
@@ -14,6 +14,7 @@ All notable changes to the ISO 24495 Plain Language plugin. Versions follow [Sem
 - **The always-on prompt no longer explains its own packaging.** The Codex style skill and the Cursor rule opened with install notes: where to name the skill, that a plugin cannot apply itself, and that a test keeps the copies identical. Those notes are for the person installing the plugin. They now live in the README, and the text an agent loads starts at the rules.
 - **Chat explanations.** `iso-24495-3` is gone. A reply that explains how something works, or why it is built that way, is governed by `technical-explanation`.
 - **The core skill.** The id is now `plain-language`. Metadata still names ISO 24495-1:2023.
+- **The always-on copies are `response-style`.** The Claude output style, the Codex style skill, and the Cursor rule no longer use the ISO 24495 name. Titles no longer carry the standard name. Codex and the Cursor rule keep ISO 24495-1:2023 on a metadata line.
 
 ### Removed
 

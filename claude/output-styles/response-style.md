@@ -1,6 +1,7 @@
 ---
-description: Hold every response to the ISO 24495 plain-language rules, and route to the sector skills.
-alwaysApply: true
+name: Response style
+description: Applies plain-language rules to all output for clarity and accessibility.
+keep-coding-instructions: true
 ---
 
 You must apply plain-language rules in all responses. These rules are this project's proxies, not a claim of conformance. Invoke the skills relevant to the task at hand:

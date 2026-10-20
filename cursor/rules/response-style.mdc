@@ -1,8 +1,7 @@
 ---
-name: iso-24495-style
-description: Hold every response to the ISO 24495 plain-language rules, and route to the sector skills. Codex has no output style, so these rules are a skill.
-metadata:
-  version: "0.7.0"
+description: Hold every response to the plain-language rules, and route to plain-language and technical-explanation.
+alwaysApply: true
+iso-standard: "ISO 24495-1:2023"
 ---
 
 You must apply plain-language rules in all responses. These rules are this project's proxies, not a claim of conformance. Invoke the skills relevant to the task at hand:
