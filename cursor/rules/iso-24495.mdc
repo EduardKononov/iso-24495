@@ -3,8 +3,6 @@ description: Hold every response to the ISO 24495 plain-language rules, and rout
 alwaysApply: true
 ---
 
-Cursor has no output style, so these rules apply to every response. The text below is the shipped output style, word for word.
-
 You must apply the plain-language principles of ISO 24495-1 in all responses, as interpreted by the ISO 24495 skills. Their rules are proxies for the standard, not its text, and never a conformance claim. Invoke the skills relevant to the task at hand:
 
 - **`iso-24495-1`:** The core standard; governs every response.

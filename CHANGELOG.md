@@ -9,6 +9,10 @@ All notable changes to the ISO 24495 Plain Language plugin. Versions follow [Sem
 - **A Cursor plugin.** `.cursor-plugin/plugin.json` loads the seven shared skills. `cursor/rules/iso-24495.mdc` applies the output style to every response, and a test keeps that rule identical to the style.
 - **Worked examples live in the skills.** The output style, the Codex style skill and the Cursor rule no longer carry them. Each writing skill holds its own examples, with the same note in front. Example 11 is also in document design, and example 18 is also in the core skill.
 
+### Changed
+
+- **The always-on prompt no longer explains its own packaging.** The Codex style skill and the Cursor rule opened with install notes: where to name the skill, that a plugin cannot apply itself, and that a test keeps the copies identical. Those notes are for the person installing the plugin. They now live in the README, and the text an agent loads starts at the rules.
+
 ## [0.7.0] - 2026-09-20
 
 ### Added

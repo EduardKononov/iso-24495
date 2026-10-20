@@ -66,11 +66,11 @@ Name the skill in your `AGENTS.md` to apply it to every response:
 Apply `iso-24495-style` to every response.
 ```
 
-Put that in your project's `AGENTS.md` or in `~/.codex/AGENTS.md`. An `AGENTS.md` inside a plugin is ignored, so a plugin cannot apply itself.
+Put that in your project's `AGENTS.md` or in `~/.codex/AGENTS.md`. An `AGENTS.md` inside a plugin is ignored, so a plugin cannot apply itself. For a single reply, invoke `$iso-24495-style` instead.
 
 ## Installation (Cursor)
 
-Cursor loads this repository as a plugin from `.cursor-plugin/plugin.json`. The manifest points at the seven shared skills in `skills/`. `cursor/rules/iso-24495.mdc` is an always-on rule. Once the plugin is installed, it applies the output style to every response. A test keeps that rule identical to `claude/output-styles/iso-24495.md`.
+Cursor loads this repository as a plugin from `.cursor-plugin/plugin.json`. The manifest points at the seven shared skills in `skills/`. Cursor has no output style, so `cursor/rules/iso-24495.mdc` is an always-on rule. Once the plugin is installed, it applies the output style to every response. A test keeps that rule identical to `claude/output-styles/iso-24495.md`.
 
 To try the plugin locally, copy this repository into `~/.cursor/plugins/local/iso-24495-plain-language`, then reload Cursor. A symlink to this repository is skipped, because Cursor only follows a symlink whose target stays inside that local folder.
 
