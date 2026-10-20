@@ -8,7 +8,7 @@
     {
       "name": "iso-24495-plain-language",
       "displayName": "ISO 24495 Plain Language",
-      "description": "Three plain language skills inspired by the ISO 24495 series, covering prose and code.",
+      "description": "Two plain language skills inspired by the ISO 24495 series, covering prose.",
       "version": "0.7.0",
       "author": {
         "name": "Gareth Williams"
@@ -20,8 +20,7 @@
       },
       "skills": [
         "./skills/plain-language",
-        "./skills/technical-explanation",
-        "./skills/iso-24495-code"
+        "./skills/technical-explanation"
       ]
     }
   ]

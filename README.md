@@ -1,6 +1,6 @@
 # ISO 24495 Plain Language Skills
 
-Three [Agent Skills](https://code.claude.com/docs/en/skills) that support plain language writing and code. They apply principles inspired by the ISO 24495 *Plain language* series.
+Two [Agent Skills](https://code.claude.com/docs/en/skills) that support plain language writing. They apply principles inspired by the ISO 24495 *Plain language* series.
 
 The skills are plain `SKILL.md` files with agent-neutral wording. Any tool that reads the Agent Skills format can use them.
 
@@ -12,11 +12,10 @@ This repository also packages them as a Claude Code plugin with an **ISO 24495 o
 |-------|-------|
 | `plain-language` | **Plain language.** Governs all user-facing output: no filler preambles, short sentences and paragraphs, active voice, scannable structure, concrete instructions. |
 | `technical-explanation` | **Technical explanation.** Tells the agent how to explain code and technical ideas to a software developer: what it is for, how the parts relate, then the code, with the file and the lines cited in the host's form. |
-| `iso-24495-code` | **Plain language in code.** Applies the principles to what a person reads in source: the order units appear in, their names, what comments say, and what an error tells the reader who hits it. Measured to change how Claude structures a file, at no cost to correctness. |
 
 The core skill activates the relevant writing skills automatically. It triggers `technical-explanation` when a reply explains how something works or why it is built that way.
 
-All skills exempt internal reasoning. The writing skills preserve code blocks, commands, and logs untouched; `iso-24495-code` is the exception, because governing code is its subject. Technical and legal accuracy always supersede formatting rules.
+All skills exempt internal reasoning. The writing skills preserve code blocks, commands, and logs untouched. Technical and legal accuracy always supersede formatting rules.
 
 ## Installation (Claude Code)
 
@@ -66,7 +65,7 @@ Put that in your project's `AGENTS.md` or in `~/.codex/AGENTS.md`. An `AGENTS.md
 
 ## Installation (Cursor)
 
-Cursor loads this repository as a plugin from `.cursor-plugin/plugin.json`. The manifest points at the three shared skills in `skills/`. Cursor has no output style, so `cursor/rules/iso-24495.mdc` is an always-on rule. Once the plugin is installed, it applies the output style to every response. A test keeps that rule identical to `claude/output-styles/iso-24495.md`.
+Cursor loads this repository as a plugin from `.cursor-plugin/plugin.json`. The manifest points at the two shared skills in `skills/`. Cursor has no output style, so `cursor/rules/iso-24495.mdc` is an always-on rule. Once the plugin is installed, it applies the output style to every response. A test keeps that rule identical to `claude/output-styles/iso-24495.md`.
 
 To try the plugin locally, copy this repository into `~/.cursor/plugins/local/iso-24495-plain-language`, then reload Cursor. A symlink to this repository is skipped, because Cursor only follows a symlink whose target stays inside that local folder.
 
