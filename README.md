@@ -13,7 +13,7 @@ This repository also packages them as a Claude Code plugin with an **ISO 24495 o
 | `iso-24495-1` | **Core principles.** Governs all user-facing output: no filler preambles, short sentences and paragraphs, active voice, scannable structure, concrete instructions. |
 | `iso-24495-2` | **Legal writing.** Extends the core skill for contracts, licences, and compliance text: standardised modal verbs, no legalese, named actors, structured conditional clauses, defined terms, cross-references that name what they point at, stable clause identifiers, a summary layer over the operative text, and section names a reader can navigate by. |
 | `iso-24495-3` | **Science and technical writing.** Extends the core skill for documentation, architecture, and code review: progressive disclosure, exact file citations, defined acronyms, text alternatives for diagrams, and the stages placed inside the document levels of `iso-24495-5`. |
-| `iso-24495-4` | **Organisational implementation (provisional).** A task skill for plain language gap analysis in organisations: a process-artefact sweep, a corpus audit, a five-dimension maturity model with deterministic scoring, and an append-only audit trend. Ships TypeScript tooling run with [Bun](https://bun.sh) (`bun test` covered). Based on the unpublished ISO/CD 24495-4 committee draft. |
+| `iso-24495-4` | **Organisational implementation (provisional).** A task skill for plain language gap analysis in organisations: a process-artefact sweep, a corpus audit, a five-dimension maturity model with deterministic scoring, and an append-only audit trend. Ships TypeScript tooling run with [Bun](https://bun.sh). Based on the unpublished ISO/CD 24495-4 committee draft. |
 | `iso-24495-5` | **Document design (provisional).** Extends the core skill for structuring complex documents: an opening block, visual hierarchy, navigation aids, layered detail, comparisons, consistent signalling, and a signpost for the reader who wanted a different document. Ships a decision record, a runbook and a design document template. Based on the unpublished ISO/WD 24495-5 working draft. |
 | `iso-24495-code` | **Plain language in code.** Applies the principles to what a person reads in source: the order units appear in, their names, what comments say, and what an error tells the reader who hits it. Measured to change how Claude structures a file, at no cost to correctness. |
 | `iso-24495-text-audit` | **User-invoked text audit.** Checks a selected `.md`, `.markdown`, or `.txt` file or directory. Reports mechanical findings with locations, without deciding validity or compliance. |
@@ -173,47 +173,15 @@ The skill never runs automatically. It requires Bun and does not alter the selec
 
 Directory audits skip selected or nested symbolic links and directory junctions. The result reports each skipped entry instead of reading beyond the selected path or following a cycle.
 
-## Testing policy
-
-Run `bash scripts/check.sh` before you push. That script is the whole gate, and GitHub Actions runs the same file on every pull request. A failure on the server therefore reproduces locally with one command. New checks belong in the script, never in the workflow.
-
-A pull request description is text a reader receives, so it is audited as well. It is not in the tree, so `scripts/check.sh` cannot reach it and a second workflow fetches it instead. The rule above still holds, because that workflow decides nothing: it hands the text to a checked-in script, which you can run over any file.
-
-```bash
-bash scripts/audit-pull-request-text.sh <file>
-```
-
-Findings are advice, and never fail the check. The script lists them in its log, and on the job's summary page when it runs on GitHub. No explanation of why a text suits its readers could satisfy a check that failed on findings.
-
-The check fails in two cases only. It fails a description that is empty or holds only whitespace, because there is nothing to audit. It also fails when the audit does not run, or its report does not show that it read the text.
-
-A pass means only that the audit ran on a description that is not empty. It does not mean the description is clear.
-
-A description has no front matter, so the script passes `--no-front-matter` to the audit. A leading `---` block is then read as text, rather than set aside as metadata the way a repository file's is.
-
-A file the script cannot read stops it with a different code, rather than any verdict about text. A review found the reason for that: a mistyped name beginning with a dash reached `dirname` as an option, and the script audited a neighbouring file and passed. A check that passes for the wrong target is worse than one that fails.
-
-Both workflows are required status checks on main, so a pull request merges only once each reports a pass. Each check takes its name from the job key inside its workflow, which is why those keys carry a warning against renaming them. Renaming one leaves a required check waiting for a report that never arrives, and every merge stops.
-
-`bun test` always measures coverage. Every measured source file must cover 100% of lines and functions. Test files are excluded from those totals.
-
-The current suite covers 100% of measured source lines and functions.
-
-Bun reports line and function coverage only in this toolchain. We make no branch-coverage claim.
-
-Logic-free composition roots are separate entry files. Tests never import them, so Bun excludes them from the coverage report. End-to-end tests still exercise those entries.
-
-Every new test receives a mutation check. The implementation is deliberately broken, the test must fail, and the correct behaviour is then restored.
-
 ## TypeScript style
 
-This project follows the [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html). It uses kebab-case filenames instead of snake_case and double quotes instead of single quotes. Both deviations match the wider ecosystem, and the repository conventions test enforces the mechanically checkable rules.
+This project follows the [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html). It uses kebab-case filenames instead of snake_case and double quotes instead of single quotes. Both deviations match the wider ecosystem.
 
 ## Why this project holds itself to these rules
 
-This repository is both the tool and a user of the tool. Its shared gate audits every supported document, including this file.
+This repository is both the tool and a user of the tool. Run the audit command over its documents, including this file, when you want that check. Nothing runs the command on every change.
 
-That is deliberate. A plain language project that exempts itself has no claim on anyone else. The Part 4 maturity audit runs against this repository first, and its findings are acted on here first.
+A plain language project that exempts itself has no claim on anyone else. The Part 4 maturity audit is meant to be run against this repository first, and its findings acted on here first.
 
 ## Roadmap
 
