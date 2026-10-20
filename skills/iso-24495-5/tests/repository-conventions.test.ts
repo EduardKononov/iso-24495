@@ -444,8 +444,10 @@ describe("repository writing conventions", () => {
   test("every output-style bullet opens with bold words", () => {
     const style = readFileSync(join(REPOSITORY_ROOT, "claude", "output-styles", "iso-24495.md"), "utf8");
     const bullets = style.split(/\r?\n/).filter((line) => /^\s*-\s+/.test(line));
+    // The worked examples moved into the skills, so this floor is the bullets
+    // that remain in the style: the routing list, the reply rules, and reporting.
     expect(bullets.length, "the output style must contain enough bullets to exercise the rule")
-      .toBeGreaterThanOrEqual(20);
+      .toBeGreaterThanOrEqual(16);
     const unlabelled = bullets.filter((line) => !/^\s*-\s+\*\*[^*]+\*\*/.test(line));
     expect(unlabelled).toEqual([]);
   });
@@ -464,11 +466,12 @@ describe("repository writing conventions", () => {
   // formatting and position, adds a label or a marked slot, and leaves every
   // word as written. Examples 17 and 18 each once reworded their "before", and
   // each was found by a reviewer rather than a test.
-  test("every Part 5 example in the output style restructures without rewording", () => {
-    const style = readFileSync(join(REPOSITORY_ROOT, "claude", "output-styles", "iso-24495.md"), "utf8");
-    const section = style.slice(
-      style.indexOf("### Document design (Part 5)"),
-      style.indexOf("### Source code"),
+  test("every Part 5 example in the document design skill restructures without rewording", () => {
+    const skill = readFileSync(join(SKILLS_ROOT, "iso-24495-5", "SKILL.md"), "utf8");
+    // Example 11 is appended after these four. It rewords, so it stays outside this slice.
+    const section = skill.slice(
+      skill.indexOf("### Document design (Part 5)"),
+      skill.indexOf("\n#### 11."),
     );
     const examples = section.split(/\n(?=#### \d+\. )/).slice(1);
     expect(examples.length).toBe(4);

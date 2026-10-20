@@ -103,3 +103,104 @@ Automatically activate and combine the appropriate domain extension alongside IS
 - **`iso-24495-4` (Organisational Implementation, provisional):** Activate it only for organisational work: gap analysis, maturity assessment, policy drafting, review workflow design, or readiness for the future published standard. Never activate it for writing, rewriting, or reviewing individual documents.
 - **`iso-24495-5` (Document Design, provisional):** Activate when producing complex multi-section documents (reports, specifications, guides, contracts) where layout, visual hierarchy, and navigation aids shape readability.
 - **`iso-24495-text-audit` (Text Audit):** Never activate automatically. The user invokes it to audit one selected text file or directory.
+
+## Worked examples
+
+Models absorb style from examples, not rules. Each pair shows a failure mode and its fix.
+
+Every "after" keeps the facts of its "before". It adds none and drops no qualification, and only filler goes. Where a "before" contradicts itself, the note beside it says which part governs. A rewrite that changes the meaning teaches the reader that plain language means reinterpreting, which is the opposite of the lesson.
+
+### Replies and plain language (Part 1)
+
+#### 1. Preamble filler
+
+The opening sentence carries the instruction, and the promise to explain goes, because the reply never kept it.
+
+```text
+Before: Hello! I'll help you set up the CI pipeline. First, let me explain what
+        continuous integration does and why it matters for your project. To set
+        it up, add a workflow file to the `.github/workflows` directory.
+After:  To set up the continuous integration pipeline, add a workflow file to the
+        `.github/workflows` directory.
+```
+
+The "after" writes the term out in full rather than defining an acronym it would use only once.
+
+#### 2. Undefined acronyms
+
+```text
+Before: The API calls the IAM endpoint, which checks the JWT and returns an STS token.
+After:  The application programming interface (API) calls the identity and access
+        management (IAM) endpoint. IAM checks the JSON Web Token (JWT) and returns
+        a Security Token Service (STS) token.
+```
+
+#### 3. Overlong sentences
+
+```text
+Before: The configuration file must be placed in the root directory of the project
+        repository so that the build system can locate it during the initialisation
+        phase of the continuous integration pipeline run.
+After:  Place the configuration file in the root directory of the repository, so
+        the build system can find it. The build system looks for it when the
+        continuous integration pipeline starts.
+```
+
+#### 4. Fragments in running prose
+
+```text
+Before: Checked the config. Looks fine. Running the tests next.
+After:  I checked the configuration, and it looks fine. I am running the tests next.
+```
+
+An opening that begins with "I" is fine when it reports what happened. Filler is the fault, not the pronoun.
+
+#### 5. Connections left for the reader to infer
+
+The "before" holds every relationship, but the reader has to work out what "That" and "A failure" refer to. The "after" states the same relationships and adds none.
+
+```text
+Before: The test suite runs in staging. Staging mirrors production. That is the
+        reason for running it there. A failure stops the deployment.
+After:  The test suite runs in staging because staging mirrors production. If a
+        test fails, the deployment stops.
+```
+
+#### 6. Full response, all rules together
+
+```text
+Before: Sure, I'd be happy to help! So I took a look at this project and here's what
+        I found. The config is using the old API format which was deprecated in v3.2
+        and will be removed in v4.0 so you should definitely migrate it soon before
+        the next major release ships. Also the tests aren't covering the auth module
+        at all, the coverage report says 0% for it, so nothing caught the token
+        expiry bug in there that got into production last week. I'd recommend adding
+        unit tests for the token validation, the session refresh logic, and the
+        permission checks.
+After:  I found two things in this project.
+
+        The configuration uses the old application programming interface format.
+        Version 3.2 deprecated that format, and version 4.0 will remove it. You
+        should therefore migrate it soon, before the next major release ships.
+
+        The tests do not cover the `auth` module at all. The coverage report shows
+        0% for that module. As a result, nothing caught the token expiry bug in it
+        before that bug reached production last week. I recommend adding unit tests
+        for:
+        - **Token validation**
+        - **The session refresh logic**
+        - **Permission checks**
+```
+
+The "after" keeps "the next major release" apart from version 4.0, because the "before" never says they are the same release. The list names the three areas the "before" names, and says nothing about what each test should assert, because the "before" does not.
+
+#### 18. Link text that names its destination
+
+A screen reader can list every link on its own, so "here" tells that reader nothing. The words stay as written, and only the link moves onto the words that name where it goes.
+
+```text
+Before: For the rollback steps, click [here](./rollback.md).
+After:  For the [rollback steps](./rollback.md), click here.
+```
+
+Dropping "click here" would reword the sentence, and rewording belongs to Part 1.

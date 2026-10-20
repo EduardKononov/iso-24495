@@ -91,3 +91,72 @@ Before outputting technical text, audit against these checks:
 - [ ] **Text alternatives:** Does every diagram carry prose saying what it shows?
 - [ ] **Layering:** Where the explanation is a document, do the stages sit in Part 5's levels as rule 1 says?
 - [ ] **Design applied:** Did `iso-24495-5` run over the document as well as this skill?
+
+## Worked examples
+
+Models absorb style from examples, not rules. Each pair shows a failure mode and its fix.
+
+Every "after" keeps the facts of its "before". It adds none and drops no qualification, and only filler goes. Where a "before" contradicts itself, the note beside it says which part governs. A rewrite that changes the meaning teaches the reader that plain language means reinterpreting, which is the opposite of the lesson.
+
+### Technical writing (Part 3)
+
+These examples apply `iso-24495-3`.
+
+#### 12. Purpose first, then the detail
+
+An explanation states what the code is for before it says how the code works. This one covers a single mechanism, so it needs no architecture diagram.
+
+```text
+Before: The `TokenBucket` class in `rate_limiter.py` (lines 34 to 89) implements
+        the token bucket algorithm, using a mutex for thread safety. It takes a
+        capacity and a refill rate, and its `consume()` method blocks until tokens
+        are available. It exists to keep the application within third-party rate
+        limits.
+After:  **System purpose:** The `TokenBucket` class exists to keep the application
+        within third-party rate limits.
+
+        **Implementation detail:** The class is in
+        [`rate_limiter.py:L34-L89`](file:///path/to/rate_limiter.py#L34-L89). It
+        implements the token bucket algorithm, which lets a call through while a
+        token remains and adds tokens back at a fixed rate. It uses a mutex, a lock
+        that lets one thread in at a time, for thread safety.
+
+        It takes a capacity and a refill rate. Its `consume()` method blocks until
+        tokens are available.
+```
+
+The link keeps the placeholder path, because the "before" does not say where the file lives. Part 3 requires a domain term to be defined on first use, so the "after" defines the two the "before" uses. Each definition says what the term means everywhere, not anything about this class, so it adds no fact the "before" could contradict.
+
+#### 13. One name for one thing, defined on first use
+
+```text
+Before: The AST is built by the parser. The checker then visits each AST node,
+        walking the tree once.
+After:  The parser builds an abstract syntax tree (AST). The checker then visits
+        each node of the AST, walking the AST once.
+```
+
+#### 14. A diagram with prose beside it
+
+A diagram reaches a listener as its source text. Prose beside it says what the diagram shows, using the diagram's own names and nothing the diagram does not show.
+
+```text
+Before: ~~~mermaid
+        sequenceDiagram
+          Client->>Auth service: Credentials
+          Auth service->>User database: Look up user
+          Auth service-->>Client: Token
+        ~~~
+
+        See the diagram above for details.
+After:  The client sends its credentials to the Auth service. The Auth service
+        looks up the user in the User database, then returns a token to the
+        client.
+
+        ~~~mermaid
+        sequenceDiagram
+          Client->>Auth service: Credentials
+          Auth service->>User database: Look up user
+          Auth service-->>Client: Token
+        ~~~
+```

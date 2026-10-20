@@ -100,3 +100,62 @@ Where two constructions are equally correct, use the one a competent reader unde
 ## Applying it to existing code
 
 Change the reading order and the language. Do not restructure behaviour in the same pass, and never move code and change it at once, because the diff stops being reviewable.
+
+## Worked examples
+
+Models absorb style from examples, not rules. Each pair shows a failure mode and its fix.
+
+Every "after" keeps the facts of its "before". It adds none and drops no qualification, and only filler goes. Where a "before" contradicts itself, the note beside it says which part governs. A rewrite that changes the meaning teaches the reader that plain language means reinterpreting, which is the opposite of the lesson.
+
+### Source code
+
+These examples apply the code skill. Each "after" behaves exactly as its "before" does, and changes only what a reader reads.
+
+#### 19. The entry point comes first
+
+A reader opening the file meets the thing it does, then the helpers it calls.
+
+```text
+Before: function validateInput(raw: string): ParsedConfig { ... }
+        function normalise(parsed: ParsedConfig): Config { ... }
+        function applyDefaults(config: Config): Config { ... }
+
+        export function loadConfig(path: string): Config {
+          const raw = readFileSync(path, "utf-8");
+          return applyDefaults(normalise(validateInput(raw)));
+        }
+After:  export function loadConfig(path: string): Config {
+          const raw = readFileSync(path, "utf-8");
+          return applyDefaults(normalise(validateInput(raw)));
+        }
+
+        function validateInput(raw: string): ParsedConfig { ... }
+        function normalise(parsed: ParsedConfig): Config { ... }
+        function applyDefaults(config: Config): Config { ... }
+```
+
+#### 20. A name that needs no comment
+
+```text
+Before: const rb = total - spent; // remaining budget
+After:  const remainingBudget = total - spent;
+```
+
+The comment goes, because the name now says what it said.
+
+#### 21. An error that names the problem
+
+The message names the format it expected and the shape of what arrived. It never quotes the value, because that value has just failed validation and could hold anything. Only a string's length is safe to read, so the message checks the type first: any other value could carry a `length` of its own.
+
+```text
+Before: if (!/^\d+(ms|s|m|h|d)$/.test(duration)) {
+          throw new Error("invalid input");
+        }
+After:  if (!/^\d+(ms|s|m|h|d)$/.test(duration)) {
+          const shape = typeof duration === "string"
+            ? `${duration.length} characters`
+            : `a value of type ${typeof duration}`;
+          throw new Error(
+            `Duration must be a whole number followed by ms, s, m, h or d; got ${shape}`);
+        }
+```

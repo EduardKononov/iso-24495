@@ -161,3 +161,120 @@ Before outputting a complex document, audit against these checks:
 - [ ] **Content primacy:** Did accuracy and completeness survive every structural choice, with nothing cut or distorted to fit a layout?
 - [ ] **Evidence over aesthetics:** Does every design element serve a reader need?
 - [ ] **Provisional label:** Where the document cites Part 5, does it say the standard is an unpublished draft?
+
+## Worked examples
+
+Models absorb style from examples, not rules. Each pair shows a failure mode and its fix.
+
+Every "after" keeps the facts of its "before". It adds none and drops no qualification, and only filler goes. Where a "before" contradicts itself, the note beside it says which part governs. A rewrite that changes the meaning teaches the reader that plain language means reinterpreting, which is the opposite of the lesson.
+
+### Document design (Part 5)
+
+These examples apply `iso-24495-5`. A restructure builds structure from sentences the document already holds, and marks a slot where nothing serves.
+
+#### 15. An opening block with a marked gap
+
+```text
+Before: # Deployment guide
+
+        This guide covers deploying the application to production. Last updated
+        March 2026.
+
+        ## Prerequisites
+After:  # Deployment guide
+
+        - **Purpose:** This guide covers deploying the application to production.
+        - **Date:** Last updated March 2026.
+        - **Reader:** [Author needed: reader]
+        - **Other guides:** [Author needed: referral, or confirm that none exists]
+
+        ## Prerequisites
+```
+
+The "before" names no reader and no other guide, so the "after" marks both as gaps rather than inventing them.
+
+#### 16. The conclusion moves to an overview
+
+A reader who stops at the overview then knows what they hold. The sentence moves unchanged, and the empty summary heading goes.
+
+```text
+Before: # Migration plan
+
+        ## Step 1: Back up the database
+        ...
+        ## Step 9: Summary
+        The migration moves the billing database to PostgreSQL 16 and takes the
+        application offline for up to 30 minutes.
+After:  # Migration plan
+
+        ## Overview
+        The migration moves the billing database to PostgreSQL 16 and takes the
+        application offline for up to 30 minutes.
+
+        ## Step 1: Back up the database
+        ...
+```
+
+#### 17. A fork as labelled conditions
+
+```text
+Before: To restore a backup, stop the service, then copy the backup file into the
+        data directory. If the copy fails, check the disk space. Otherwise, start
+        the service.
+After:  To restore a backup, stop the service, then copy the backup file into the
+        data directory.
+
+        - **If the copy fails**, check the disk space.
+        - **Otherwise**, start the service.
+```
+
+The first sentence stays whole, because splitting it into numbered steps would reword it. Each branch keeps its sentence as written, with its condition in bold.
+
+#### 18. Link text that names its destination
+
+A screen reader can list every link on its own, so "here" tells that reader nothing. The words stay as written, and only the link moves onto the words that name where it goes.
+
+```text
+Before: For the rollback steps, click [here](./rollback.md).
+After:  For the [rollback steps](./rollback.md), click here.
+```
+
+Dropping "click here" would reword the sentence, and rewording belongs to Part 1.
+
+#### 11. A summary that names the operative text
+
+A summary that drops a condition changes what the reader believes their rights are. A summary must also say that the operative text governs and name where it starts.
+
+```text
+Before: 9.1 The Customer shall be entitled to terminate this Agreement upon the
+            giving of not less than 30 days' written notice to the Supplier.
+            Upon such termination, the Supplier shall refund to the Customer the
+            fees paid in respect of the unexpired portion of the term. Such
+            refund shall be calculated on a pro-rata basis.
+
+        Summary: You can end the Agreement and get your money back.
+After:  ## Summary of your main terms
+
+        The operative text starts at clause 9.1 below, and it governs.
+
+        - **Termination:** You may terminate this Agreement by giving the
+          Supplier at least 30 days' written notice.
+        - **Refund:** If you do, the Supplier must refund you the fees paid for
+          the part of the term that has not yet run, calculated pro rata.
+
+        9.1 The Customer may terminate this Agreement by giving the Supplier at
+            least 30 days' written notice. If the Customer does so, the Supplier
+            must refund to the Customer the fees paid for the part of the term
+            that has not yet run. The refund is calculated pro rata.
+```
+
+The clause holds six terms, and the "after" states each one in the summary and again in the clause:
+
+1. The Customer may end the Agreement.
+2. The notice is written and goes to the Supplier.
+3. The notice is at least 30 days.
+4. The Supplier must then refund the Customer.
+5. The refund covers the fees paid for the part of the term that has not yet run.
+6. The refund is calculated pro rata.
+
+The list says "end" where the clause says "terminate", because the list explains and the clause binds. The summary in the "before" keeps the first and fourth terms and drops the other four. The "after" adds no term. Its one other sentence says where the operative text starts and that it governs.

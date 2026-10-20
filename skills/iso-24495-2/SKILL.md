@@ -130,3 +130,126 @@ Before outputting legal text, audit against these checks:
 - [ ] **Summary:** Does it name the governing text, and add, qualify and remove nothing?
 - [ ] **Section names:** Does each name the subject a reader would look for?
 - [ ] **Design applied:** Did `iso-24495-5` run over the document as well as this skill?
+
+## Worked examples
+
+Models absorb style from examples, not rules. Each pair shows a failure mode and its fix.
+
+Every "after" keeps the facts of its "before". It adds none and drops no qualification, and only filler goes. Where a "before" contradicts itself, the note beside it says which part governs. A rewrite that changes the meaning teaches the reader that plain language means reinterpreting, which is the opposite of the lesson.
+
+### Legal writing (Part 2)
+
+These examples apply `iso-24495-2`. Plain legal text must never change a right, a liability or what a clause enforces, so each "after" keeps every term of its "before".
+
+#### 7. The actor leads the obligation
+
+Use *must* for an obligation, and put the party who carries it at the front.
+
+```text
+Before: 5.1 When the notice period ends, the premises shall be vacated by the
+            tenant, and all keys shall be returned by the tenant to the landlord.
+After:  5.1 When the notice period ends, the tenant must vacate the premises and
+            return all keys to the landlord.
+```
+
+The "after" keeps "vacate", because it is the legal term the clause relies on. It keeps the identifier 5.1 too, because an operative clause carries one.
+
+#### 8. One defined term, used unchanged
+
+Two names for one concept invite an argument that they mean two things. Say in words that a term is defined, because capital letters are silent to a listener.
+
+```text
+Before: 1.2 "Confidential Information", also referred to herein as "CI" or
+            "confidential material", means information the discloser marks as
+            confidential.
+
+        6.1 The recipient shall protect all confidential material.
+
+        6.2 Any breach of the CI obligations entitles the discloser to terminate
+            this agreement.
+After:  1.2 Confidential Information is a defined term. It means information the
+            discloser marks as confidential.
+
+        6.1 The recipient must protect all Confidential Information.
+
+        6.2 If an obligation about Confidential Information is breached, the
+            discloser may terminate this agreement.
+```
+
+The "before" states that all three names mean one thing, which is what lets the "after" use one. Clause 6.2 stays passive, because the "before" does not say who breaches. It keeps "terminate", because termination is the remedy the clause grants.
+
+#### 9. Conditions as labelled items
+
+A clause with more than one condition reads more clearly as a trigger, an action and a consequence.
+
+```text
+Before: 9.1 In the event that the supplier fails to deliver the goods within 14
+            days of the order date, and such failure is not due to force majeure,
+            the buyer shall be entitled to cancel the order and receive a full
+            refund of any sums paid.
+After:  9.1 Late delivery
+        - **Trigger:** The supplier does not deliver the goods within 14 days of
+          the order date, and force majeure did not cause the delay.
+        - **Action:** The buyer may cancel the order.
+        - **Consequence:** A buyer who cancels is entitled to a full refund of
+          any sums paid.
+```
+
+The identifier 9.1 stays in the clause text, because a list would renumber it.
+
+#### 10. Cross-references that say what they point at
+
+```text
+Before: 4.2 Notice deadline
+
+        The licensee must notify the licensor of any claim within 30 days.
+
+        11.3 The licensor may reject any claim notified later than clause 4.2
+             permits.
+After:  4.2 Notice deadline
+
+        The licensee must notify the licensor of any claim within 30 days.
+
+        11.3 The licensor may reject any claim notified after the notice deadline
+             in clause 4.2.
+```
+
+The words "the notice deadline" match the heading of clause 4.2 exactly.
+
+#### 11. A summary that names the operative text
+
+A summary that drops a condition changes what the reader believes their rights are. A summary must also say that the operative text governs and name where it starts.
+
+```text
+Before: 9.1 The Customer shall be entitled to terminate this Agreement upon the
+            giving of not less than 30 days' written notice to the Supplier.
+            Upon such termination, the Supplier shall refund to the Customer the
+            fees paid in respect of the unexpired portion of the term. Such
+            refund shall be calculated on a pro-rata basis.
+
+        Summary: You can end the Agreement and get your money back.
+After:  ## Summary of your main terms
+
+        The operative text starts at clause 9.1 below, and it governs.
+
+        - **Termination:** You may terminate this Agreement by giving the
+          Supplier at least 30 days' written notice.
+        - **Refund:** If you do, the Supplier must refund you the fees paid for
+          the part of the term that has not yet run, calculated pro rata.
+
+        9.1 The Customer may terminate this Agreement by giving the Supplier at
+            least 30 days' written notice. If the Customer does so, the Supplier
+            must refund to the Customer the fees paid for the part of the term
+            that has not yet run. The refund is calculated pro rata.
+```
+
+The clause holds six terms, and the "after" states each one in the summary and again in the clause:
+
+1. The Customer may end the Agreement.
+2. The notice is written and goes to the Supplier.
+3. The notice is at least 30 days.
+4. The Supplier must then refund the Customer.
+5. The refund covers the fees paid for the part of the term that has not yet run.
+6. The refund is calculated pro rata.
+
+The list says "end" where the clause says "terminate", because the list explains and the clause binds. The summary in the "before" keeps the first and fourth terms and drops the other four. The "after" adds no term. Its one other sentence says where the operative text starts and that it governs.
