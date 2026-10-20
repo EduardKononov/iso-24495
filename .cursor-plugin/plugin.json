@@ -1,0 +1,19 @@
+{
+  "name": "iso-24495-plain-language",
+  "version": "0.7.0",
+  "description": "Seven plain language skills inspired by the ISO 24495 series, plus an always-on plain-language rule.",
+  "author": {
+    "name": "Gareth Williams"
+  },
+  "license": "MIT",
+  "keywords": [
+    "plain-language",
+    "iso-24495",
+    "writing",
+    "documentation",
+    "legal-writing",
+    "technical-writing"
+  ],
+  "skills": "./skills/",
+  "rules": "./cursor/rules"
+}

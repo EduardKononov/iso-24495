@@ -2,6 +2,12 @@
 
 All notable changes to the ISO 24495 Plain Language plugin. Versions follow [Semantic Versioning](https://semver.org). Installs are pinned to tagged releases via the marketplace manifest.
 
+## [Unreleased]
+
+### Added
+
+- **A Cursor plugin.** `.cursor-plugin/plugin.json` loads the seven shared skills. `cursor/rules/iso-24495.mdc` applies the output style to every response, and a test keeps that rule identical to the style.
+
 ## [0.7.0] - 2026-09-20
 
 ### Added

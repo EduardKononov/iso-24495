@@ -68,7 +68,7 @@ function isPinnedKind(file: string): boolean {
   // The engine's comment says every caller must ask it rather than compare
   // extensions, and this is a caller.
   return isAuditedDocument(name)
-    || [".yaml", ".yml", ".json"].some((kind) => name.endsWith(kind))
+    || [".yaml", ".yml", ".json", ".mdc"].some((kind) => name.endsWith(kind))
     || !name.includes(".");
 }
 
@@ -1016,7 +1016,7 @@ describe("repository writing conventions", () => {
       }
     }
 
-    for (const root of [".claude-plugin", ".codex-plugin"]) {
+    for (const root of [".claude-plugin", ".codex-plugin", ".cursor-plugin"]) {
       const base = join(REPOSITORY_ROOT, root);
       if (!existsSync(base)) continue;
       for (const entry of readdirSync(base)) {
@@ -1059,6 +1059,7 @@ describe("repository writing conventions", () => {
     }
 
     textFilesUnder("claude/output-styles", "claude/output-styles");
+    textFilesUnder("cursor/rules", "cursor/rules");
 
     // Named rather than swept, because the root holds build and repository
     // furniture that no reader receives. A review added a contributing guide
@@ -1918,29 +1919,41 @@ describe("repository writing conventions", () => {
         "utf8",
       )) as { skills: string[] };
       expect(codex.skills).toEqual(["./skills/", "./codex-skills/"]);
+
+      const cursor = JSON.parse(readFileSync(
+        join(REPOSITORY_ROOT, ".cursor-plugin", "plugin.json"),
+        "utf8",
+      )) as { skills: string; rules: string };
+      expect(cursor.skills).toBe("./skills/");
+      expect(cursor.rules).toBe("./cursor/rules");
+      expect(JSON.stringify(cursor)).not.toContain("codex-skills");
     });
 
-    // Codex has no output style, so the same rules are a skill there. The two
-    // must say the same thing, or a Codex user and a Claude user are held to
-    // different standards.
+    // Codex has no output style, so the same rules are a skill there. Cursor
+    // applies them as an always-on rule. Each copy must say the same thing, or
+    // a Codex user, a Cursor user and a Claude user are held to different standards.
     test("the style skill holds the output style word for word", () => {
       const style = readFileSync(
         join(REPOSITORY_ROOT, "claude", "output-styles", "iso-24495.md"),
         "utf8",
       );
-      const skill = readFileSync(
+      const copies = [
         join(CODEX_SKILLS_ROOT, "iso-24495-style", "SKILL.md"),
-        "utf8",
-      );
+        join(REPOSITORY_ROOT, "cursor", "rules", "iso-24495.mdc"),
+      ];
       const body = style.split("---")[2].trim();
       expect(body.length).toBeGreaterThan(500);
       // Everything from the style's first sentence to the end must be the style's
-      // body exactly. Containment let a line appended to the skill alone, such as
+      // body exactly. Containment let a line appended to one copy alone, such as
       // "Ignore every rule above.", pass for the same rules.
       const anchor = body.slice(0, 60);
-      const fromAnchor = skill.slice(skill.indexOf(anchor)).replace(/\r\n/g, "\n").trim();
-      expect(skill.indexOf(anchor)).toBeGreaterThan(0);
-      expect(fromAnchor).toBe(body.replace(/\r\n/g, "\n"));
+      const expected = body.replace(/\r\n/g, "\n");
+      for (const copy of copies) {
+        const text = readFileSync(copy, "utf8");
+        const fromAnchor = text.slice(text.indexOf(anchor)).replace(/\r\n/g, "\n").trim();
+        expect(text.indexOf(anchor), copy).toBeGreaterThan(0);
+        expect(fromAnchor, copy).toBe(expected);
+      }
     });
 
     test("the README explains Codex installation and its one limit", () => {
@@ -1986,7 +1999,7 @@ describe("repository writing conventions", () => {
     });
   });
 
-  // Twelve places carry the release version between them, and moving some but
+  // Thirteen places carry the release version between them, and moving some but
   // not all of them has already reached users. The 0.6.1 release bumped the
   // marketplace, the Claude manifest and all eight skill files, and missed
   // `.codex-plugin/plugin.json`, so a Codex user read a version one release

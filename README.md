@@ -68,6 +68,14 @@ Apply `iso-24495-style` to every response.
 
 Put that in your project's `AGENTS.md` or in `~/.codex/AGENTS.md`. An `AGENTS.md` inside a plugin is ignored, so a plugin cannot apply itself.
 
+## Installation (Cursor)
+
+Cursor loads this repository as a plugin from `.cursor-plugin/plugin.json`. The manifest points at the seven shared skills in `skills/`. `cursor/rules/iso-24495.mdc` is an always-on rule. Once the plugin is installed, it applies the output style to every response. A test keeps that rule identical to `claude/output-styles/iso-24495.md`.
+
+To try the plugin locally, copy this repository into `~/.cursor/plugins/local/iso-24495-plain-language`, then reload Cursor. A symlink to this repository is skipped, because Cursor only follows a symlink whose target stays inside that local folder.
+
+Publishing is at [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish).
+
 ## Usage
 
 Once installed, the agent loads the skills when their descriptions match the task. To apply one explicitly, ask for it by name, for example: "Apply `iso-24495-2` to this licence text."

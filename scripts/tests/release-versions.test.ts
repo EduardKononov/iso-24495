@@ -28,6 +28,7 @@ function makeCheckout(version: string): string {
   };
   write(".claude-plugin/plugin.json", JSON.stringify({ name: "plugin", version }));
   write(".codex-plugin/plugin.json", JSON.stringify({ name: "plugin", version }));
+  write(".cursor-plugin/plugin.json", JSON.stringify({ name: "plugin", version }));
   write(".claude-plugin/marketplace.json", JSON.stringify({
     plugins: [{ version, source: { source: "url", ref: `v${version}` } }],
   }));
@@ -87,6 +88,7 @@ describe("checkVersionSites, which the normal gate runs", () => {
   test("one stale site fails, and the problem names it", () => {
     const stale: Array<[string, string, string, string]> = [
       [".codex-plugin/plugin.json", "\"0.7.0\"", "\"0.6.2\"", ".codex-plugin/plugin.json version"],
+      [".cursor-plugin/plugin.json", "\"0.7.0\"", "\"0.6.2\"", ".cursor-plugin/plugin.json version"],
       [".claude-plugin/marketplace.json", "\"version\":\"0.7.0\"", "\"version\":\"0.6.2\"", "marketplace version"],
       [".claude-plugin/marketplace.json", "\"ref\":\"v0.7.0\"", "\"ref\":\"v0.6.2\"", "marketplace source.ref"],
       ["skills/iso-24495-text-audit/SKILL.md", "\"0.7.0\"", "\"0.6.2\"", "skills/iso-24495-text-audit/SKILL.md"],

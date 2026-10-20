@@ -1,9 +1,10 @@
 // Every place that carries the release version, and the three checks that read
 // them.
 //
-// Twelve places carry the version between them: both plugin manifests, the
-// marketplace entry's version and the `ref` in its source object, and every
-// skill's `metadata.version`. Moving some but not all of them has reached users.
+// Thirteen places carry the version between them: the Claude, Codex and Cursor
+// plugin manifests, the marketplace entry's version and the `ref` in its source
+// object, and every skill's `metadata.version`. Moving some but not all of them
+// has reached users.
 // The 0.6.1 release missed `.codex-plugin/plugin.json`, and a forgotten `ref`
 // once left users installing the previous release, because installs pin to the
 // tag the `ref` names.
@@ -107,6 +108,8 @@ export function checkVersionSites(root: string): VersionReport {
     );
   }
   requireValue(".codex-plugin/plugin.json version", readJson(".codex-plugin/plugin.json").version,
+    version);
+  requireValue(".cursor-plugin/plugin.json version", readJson(".cursor-plugin/plugin.json").version,
     version);
 
   const marketplace = readJson(".claude-plugin/marketplace.json") as {
