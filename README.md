@@ -13,9 +13,9 @@ This repository also packages them as a Claude Code plugin with a **Response sty
 | `plain-language` | **Plain language.** Governs all user-facing output: no filler preambles, short sentences and paragraphs, active voice, scannable structure, concrete instructions. |
 | `technical-explanation` | **Technical explanation.** Tells the agent how to explain code and technical ideas to a software developer: what it is for, how the parts relate, then the code, with the file and the lines cited in the host's form. |
 
-The core skill activates the relevant writing skills automatically. It triggers `technical-explanation` when a reply explains how something works or why it is built that way.
+`plain-language` triggers `technical-explanation` when a reply explains how something works or why it is built that way.
 
-All skills exempt internal reasoning. The writing skills preserve code blocks, commands, and logs untouched. Technical and legal accuracy always supersede formatting rules.
+All skills exempt internal reasoning. The writing skills preserve code blocks, commands, and logs untouched. Technical accuracy and factual correctness always supersede formatting rules.
 
 ## Installation (Claude Code)
 
@@ -87,31 +87,20 @@ For agents without a plugin system, copy the `skills/` subdirectories into where
 
 This unofficial project is not affiliated with, endorsed by, or approved by the International Organization for Standardization (ISO). The skills contain original guidance inspired by the ISO 24495 series. They do not reproduce the text of any ISO standard.
 
-Publication status: Part 1 published 2023, Part 2 August 2025, Part 3 May 2026. Part 5 remains an unpublished draft (ISO/WD 24495-5).
-
 **Conformance disclaimer.** The full ISO 24495 texts are licensed and have not been consulted. These skills are built from public principles, published scopes, and common plain-language practice.
 
-The principles derive from the International Plain Language Federation's freely published framework. Every quantitative rule here (sentence length, paragraph density, legalese, heading depth) is this project's own proxy. No rule is a clause of any standard.
+The principles derive from the International Plain Language Federation's freely published framework. The quantitative rules are this project's own proxies. No rule is a clause of any standard.
 
-Nothing this plugin produces is a statement of ISO conformance. No certification scheme exists for ISO 24495. "Aligned" in the skills means aligned with this project's interpretation, nothing more.
+Nothing this plugin produces is a statement of ISO conformance. No certification scheme exists for ISO 24495.
 
 ## Reference
 
 Read the standard rather than this project's reading of it.
 
-- **[ISO 24495-1:2023, Plain language, Part 1: Governing principles and guidelines](https://www.iso.org/standard/78907.html)**, the published standard these skills interpret. The ISO catalogue also carries Part 2 (legal writing) and Part 3 (science and technical communication).
+- **[ISO 24495-1:2023, Plain language, Part 1: Governing principles and guidelines](https://www.iso.org/standard/78907.html)**, the published standard these skills interpret.
 - **[The International Plain Language Federation's definition and framework](https://www.iplfederation.org/iso-standard/)**, freely published, and the source of the four governing principles used here.
-- **[Plain Language Association International on the ISO standard](https://plainlanguage.com/what-is-plain-language/iso-plain-language-standard/)**, background on how the standard was drafted and what it covers.
 
 The ISO texts are licensed, so the standards themselves cost money. Everything in this repository is built from the freely published material above.
-
-## TypeScript style
-
-This project follows the [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html). It uses kebab-case filenames instead of snake_case and double quotes instead of single quotes. Both deviations match the wider ecosystem.
-
-## Roadmap
-
-Plain-language checks on script comments were once planned for this release. That plan is cancelled. Comments are fragments, and checking them well would cost more machinery than the advice is worth.
 
 ## Licence
 

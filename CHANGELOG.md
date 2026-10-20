@@ -15,6 +15,7 @@ All notable changes to the Plain language plugin. Versions follow [Semantic Vers
 - **Chat explanations.** `iso-24495-3` is gone. A reply that explains how something works, or why it is built that way, is governed by `technical-explanation`.
 - **The core skill.** The id is now `plain-language`. Metadata still names ISO 24495-1:2023.
 - **The always-on copies are `response-style`.** The Claude output style, the Codex style skill, and the Cursor rule no longer use the ISO 24495 name. Titles no longer carry the standard name. Codex and the Cursor rule keep ISO 24495-1:2023 on a metadata line.
+- **The README describes the current plugin.** It covers the two skills and the response style.
 
 ### Removed
 
