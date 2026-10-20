@@ -7,7 +7,7 @@
     "name": "Gareth Williams"
   },
   "license": "MIT",
-  "outputStyles": "./output-styles/",
+  "outputStyles": "./claude/output-styles/",
   "keywords": [
     "plain-language",
     "iso-24495",

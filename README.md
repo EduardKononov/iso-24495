@@ -4,7 +4,7 @@ Seven [Agent Skills](https://code.claude.com/docs/en/skills) that support plain 
 
 The skills are plain `SKILL.md` files with agent-neutral wording. Any tool that reads the Agent Skills format can use them.
 
-This repository also packages them as a Claude Code plugin with an **ISO 24495 output style** (`output-styles/iso-24495.md`). Select the style with `/output-style` to hold every response to the core rules without relying on skill activation.
+This repository also packages them as a Claude Code plugin with an **ISO 24495 output style** (`claude/output-styles/iso-24495.md`). Select the style with `/output-style` to hold every response to the core rules without relying on skill activation.
 
 ## Skills
 

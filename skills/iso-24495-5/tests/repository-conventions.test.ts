@@ -416,7 +416,7 @@ describe("repository writing conventions", () => {
   // measures one limit and the guidance still quotes the old one.
   test("the output style and core skill quote the engine's current limits", () => {
     const guidance = [
-      join(REPOSITORY_ROOT, "output-styles", "iso-24495.md"),
+      join(REPOSITORY_ROOT, "claude", "output-styles", "iso-24495.md"),
       join(SKILLS_ROOT, "iso-24495-1", "SKILL.md"),
     ];
     // Anchored to the sentence making each claim. Testing only that the number
@@ -442,7 +442,7 @@ describe("repository writing conventions", () => {
   });
 
   test("every output-style bullet opens with bold words", () => {
-    const style = readFileSync(join(REPOSITORY_ROOT, "output-styles", "iso-24495.md"), "utf8");
+    const style = readFileSync(join(REPOSITORY_ROOT, "claude", "output-styles", "iso-24495.md"), "utf8");
     const bullets = style.split(/\r?\n/).filter((line) => /^\s*-\s+/.test(line));
     expect(bullets.length, "the output style must contain enough bullets to exercise the rule")
       .toBeGreaterThanOrEqual(20);
@@ -465,7 +465,7 @@ describe("repository writing conventions", () => {
   // word as written. Examples 17 and 18 each once reworded their "before", and
   // each was found by a reviewer rather than a test.
   test("every Part 5 example in the output style restructures without rewording", () => {
-    const style = readFileSync(join(REPOSITORY_ROOT, "output-styles", "iso-24495.md"), "utf8");
+    const style = readFileSync(join(REPOSITORY_ROOT, "claude", "output-styles", "iso-24495.md"), "utf8");
     const section = style.slice(
       style.indexOf("### Document design (Part 5)"),
       style.indexOf("### Source code"),
@@ -500,7 +500,7 @@ describe("repository writing conventions", () => {
   });
 
   test("the output style keeps the reporting rules", () => {
-    const style = readFileSync(join(REPOSITORY_ROOT, "output-styles", "iso-24495.md"), "utf8");
+    const style = readFileSync(join(REPOSITORY_ROOT, "claude", "output-styles", "iso-24495.md"), "utf8");
     expect(style).toMatch(/^## Reporting work$/m);
     const section = style.split("## Reporting work")[1]?.split("\n## ")[0] ?? "";
     const rules = [
@@ -766,7 +766,7 @@ describe("repository writing conventions", () => {
     // The Codex style skill holds this body word for word, so one check covers
     // both. Both halves are pinned: the legal entry that reaches Part 5, and
     // the Part 5 entry that admits a contract.
-    const style = readFileSync(join(REPOSITORY_ROOT, "output-styles", "iso-24495.md"), "utf8");
+    const style = readFileSync(join(REPOSITORY_ROOT, "claude", "output-styles", "iso-24495.md"), "utf8");
     const styleLines = style.split("\n");
     const styleLegal = styleLines.find((line) => line.includes("**`iso-24495-2`:**")) ?? "";
     expect(styleLegal, "the style must route a legal task to Part 5").toContain(
@@ -957,7 +957,7 @@ describe("repository writing conventions", () => {
     // separate test enforces that. Both are checked here, so deleting the same
     // text from both at once cannot slip through the pair being identical.
     for (const file of [
-      join(REPOSITORY_ROOT, "output-styles", "iso-24495.md"),
+      join(REPOSITORY_ROOT, "claude", "output-styles", "iso-24495.md"),
       join(CODEX_SKILLS_ROOT, "iso-24495-style", "SKILL.md"),
     ]) {
       const lines = readFileSync(file, "utf8").split(/\r?\n/);
@@ -1058,7 +1058,7 @@ describe("repository writing conventions", () => {
       }
     }
 
-    textFilesUnder("output-styles", "output-styles");
+    textFilesUnder("claude/output-styles", "claude/output-styles");
 
     // Named rather than swept, because the root holds build and repository
     // furniture that no reader receives. A review added a contributing guide
@@ -1213,7 +1213,7 @@ describe("repository writing conventions", () => {
   });
 
   test("the output style keeps a send-time check", () => {
-    const style = readFileSync(join(REPOSITORY_ROOT, "output-styles", "iso-24495.md"), "utf8");
+    const style = readFileSync(join(REPOSITORY_ROOT, "claude", "output-styles", "iso-24495.md"), "utf8");
     expect(style).toMatch(/^## Check before you send$/m);
     expect(style).toMatch(/^## Applying this to a reply$/m);
   });
@@ -1223,7 +1223,7 @@ describe("repository writing conventions", () => {
   // only way to pass is to pad it.
   test("the average is stated as an aim, never as a floor", () => {
     const guidance = [
-      join(REPOSITORY_ROOT, "output-styles", "iso-24495.md"),
+      join(REPOSITORY_ROOT, "claude", "output-styles", "iso-24495.md"),
       join(SKILLS_ROOT, "iso-24495-1", "SKILL.md"),
     ];
     const floors = guidance.flatMap((path) => {
@@ -1925,7 +1925,7 @@ describe("repository writing conventions", () => {
     // different standards.
     test("the style skill holds the output style word for word", () => {
       const style = readFileSync(
-        join(REPOSITORY_ROOT, "output-styles", "iso-24495.md"),
+        join(REPOSITORY_ROOT, "claude", "output-styles", "iso-24495.md"),
         "utf8",
       );
       const skill = readFileSync(
