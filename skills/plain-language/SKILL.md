@@ -1,15 +1,15 @@
 ---
-name: iso-24495-1
-description: Core Plain Language standard (ISO 24495-1:2023). Governs all user-facing responses to ensure clear, structured, findable, understandable, and actionable output.
+name: plain-language
+description: Plain-language rules for every reply. Governs all user-facing responses so they are clear, structured, findable, understandable, and actionable.
 metadata:
   version: "0.7.0"
   iso-standard: "ISO 24495-1:2023"
   iso-status: "published"
 ---
 
-# ISO 24495-1:2023 - Plain Language (Governing Principles)
+# Plain language
 
-All user-facing responses from a large language model (LLM) must follow the plain-language principles of ISO 24495-1:2023 as interpreted by this skill. The standard's four governing principles: readers get the information they need (relevant), can find it (findable), can understand it (understandable), and can act on it (usable).
+All user-facing responses from a large language model (LLM) must follow the plain-language principles in this skill. The four governing principles: readers get the information they need (relevant), can find it (findable), can understand it (understandable), and can act on it (usable).
 
 Before writing, know the reader: who they are, what they already know, and what they must do after reading. Content that serves none of those belongs elsewhere.
 
@@ -24,7 +24,7 @@ The quantitative rules below are this skill's own proxies for those principles. 
 ## Scope & Execution Boundaries
 
 1. **Thinking Block Exemption:**
-   - Internal reasoning, chain-of-thought, and thinking blocks (the `thought` and `thinking` tags) are **100% exempt** from all ISO 24495 constraints.
+   - Internal reasoning, chain-of-thought, and thinking blocks (the `thought` and `thinking` tags) are **100% exempt** from these plain-language constraints.
    - Reason deeply and unconstrained within thinking blocks. Apply plain language rules strictly to final user-facing output.
 
 2. **Code & Data Preservation Exemption:**
@@ -76,7 +76,7 @@ The quantitative rules below are this skill's own proxies for those principles. 
   activate the virtual environment by running the script located in the bin
   directory, after which dependencies can be installed using pip.
   ```
-* ✅ **ISO 24495-1 Aligned:**
+* ✅ **Plain language:**
   > Activate the virtual environment and install dependencies:
   > 1. **Activate virtual environment:** Run `source .venv/bin/activate`.
   > 2. **Install dependencies:** Run `pip install -r requirements.txt`.
@@ -97,7 +97,7 @@ Before outputting user-facing text, audit against these checks:
 
 ## Domain Extension Triggers
 
-Automatically activate and combine the appropriate domain extension alongside ISO 24495-1:
+Automatically activate and combine the appropriate domain extension alongside `plain-language`:
 - **`technical-explanation`:** Activate when a reply explains how code or a technical idea works, or why it is built that way.
 
 ## Worked examples
@@ -106,7 +106,7 @@ Models absorb style from examples, not rules. Each pair shows a failure mode and
 
 Every "after" keeps the facts of its "before". It adds none and drops no qualification, and only filler goes. Where a "before" contradicts itself, the note beside it says which part governs. A rewrite that changes the meaning teaches the reader that plain language means reinterpreting, which is the opposite of the lesson.
 
-### Replies and plain language (Part 1)
+### Replies and plain language
 
 #### 1. Preamble filler
 
@@ -199,4 +199,4 @@ Before: For the rollback steps, click [here](./rollback.md).
 After:  For the [rollback steps](./rollback.md), click here.
 ```
 
-Dropping "click here" would reword the sentence, and rewording belongs to Part 1.
+Dropping "click here" would reword the sentence, and rewording belongs to this skill.

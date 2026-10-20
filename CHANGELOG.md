@@ -13,6 +13,7 @@ All notable changes to the ISO 24495 Plain Language plugin. Versions follow [Sem
 
 - **The always-on prompt no longer explains its own packaging.** The Codex style skill and the Cursor rule opened with install notes: where to name the skill, that a plugin cannot apply itself, and that a test keeps the copies identical. Those notes are for the person installing the plugin. They now live in the README, and the text an agent loads starts at the rules.
 - **Chat explanations.** `iso-24495-3` is gone. A reply that explains how something works, or why it is built that way, is governed by `technical-explanation`.
+- **The core skill.** The id is now `plain-language`. Metadata still names ISO 24495-1:2023.
 
 ### Removed
 

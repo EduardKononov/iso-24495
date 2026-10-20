@@ -19,7 +19,7 @@
         "ref": "v0.7.0"
       },
       "skills": [
-        "./skills/iso-24495-1",
+        "./skills/plain-language",
         "./skills/technical-explanation",
         "./skills/iso-24495-code"
       ]

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plain language"
+  short_description: "Write so readers can find, understand and act on what they read"
+  default_prompt: "Use $plain-language to hold this answer to plain language: lead with the outcome, keep sentences short, and say what the reader does next."

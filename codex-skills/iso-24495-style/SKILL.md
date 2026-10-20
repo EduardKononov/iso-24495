@@ -5,12 +5,12 @@ metadata:
   version: "0.7.0"
 ---
 
-You must apply the plain-language principles of ISO 24495-1 in all responses, as interpreted by the ISO 24495 skills. Their rules are proxies for the standard, not its text, and never a conformance claim. Invoke the skills relevant to the task at hand:
+You must apply plain-language rules in all responses. These rules are this project's proxies, not a claim of conformance. Invoke the skills relevant to the task at hand:
 
-- **`iso-24495-1`:** The core standard; governs every response.
+- **`plain-language`:** Governs every response.
 - **`technical-explanation`:** Explains code and technical ideas to a software developer: what it is for, how the parts relate, then the code. Activate it when a reply explains how something works or why it is built that way.
 
-The standard's four governing principles: readers get the information they need (**relevant**), can find it (**findable**), can understand it (**understandable**), and can act on it (**usable**).
+The four governing principles: readers get the information they need (**relevant**), can find it (**findable**), can understand it (**understandable**), and can act on it (**usable**).
 
 ## Scope and exemptions
 

@@ -10,7 +10,7 @@ This repository also packages them as a Claude Code plugin with an **ISO 24495 o
 
 | Skill | Scope |
 |-------|-------|
-| `iso-24495-1` | **Core principles.** Governs all user-facing output: no filler preambles, short sentences and paragraphs, active voice, scannable structure, concrete instructions. |
+| `plain-language` | **Plain language.** Governs all user-facing output: no filler preambles, short sentences and paragraphs, active voice, scannable structure, concrete instructions. |
 | `technical-explanation` | **Technical explanation.** Tells the agent how to explain code and technical ideas to a software developer: what it is for, how the parts relate, then the code, with the file and the lines cited in the host's form. |
 | `iso-24495-code` | **Plain language in code.** Applies the principles to what a person reads in source: the order units appear in, their names, what comments say, and what an error tells the reader who hits it. Measured to change how Claude structures a file, at no cost to correctness. |
 
@@ -52,7 +52,7 @@ codex plugin marketplace add .
 codex plugin add iso-24495-plain-language@iso-24495
 ```
 
-Every skill carries `agents/openai.yaml`, which gives Codex its display name, its short description, and the prompt Codex offers for it. Invoke a skill by name, as in `$iso-24495-1`, or ask for it in words.
+Every skill carries `agents/openai.yaml`, which gives Codex its display name, its short description, and the prompt Codex offers for it. Invoke a skill by name, as in `$plain-language`, or ask for it in words.
 
 Codex has no output style, so the same rules are a skill there: `iso-24495-style` holds the output style word for word, and a test keeps the two identical. It lives in `codex-skills/` rather than `skills/`, because Claude Code scans `skills/` and would otherwise offer a skill its output style already covers. Codex reads both directories, named in `.codex-plugin/plugin.json`.
 
@@ -79,7 +79,7 @@ Once installed, the agent loads the skills when their descriptions match the tas
 To enforce the core skill on every response, add a line to your agent's instruction file (`CLAUDE.md`, `AGENTS.md`, or equivalent):
 
 ```markdown
-- ALWAYS activate and adhere to the `iso-24495-1` Plain Language skill across all responses
+- ALWAYS activate and adhere to the `plain-language` skill across all responses
 ```
 
 For agents without a plugin system, copy the `skills/` subdirectories into wherever the tool discovers skills.
