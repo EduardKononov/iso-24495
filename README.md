@@ -1,6 +1,6 @@
 # ISO 24495 Plain Language Skills
 
-Five [Agent Skills](https://code.claude.com/docs/en/skills) that support plain language writing and code. They apply principles inspired by the ISO 24495 *Plain language* series.
+Four [Agent Skills](https://code.claude.com/docs/en/skills) that support plain language writing and code. They apply principles inspired by the ISO 24495 *Plain language* series.
 
 The skills are plain `SKILL.md` files with agent-neutral wording. Any tool that reads the Agent Skills format can use them.
 
@@ -11,12 +11,11 @@ This repository also packages them as a Claude Code plugin with an **ISO 24495 o
 | Skill | Scope |
 |-------|-------|
 | `iso-24495-1` | **Core principles.** Governs all user-facing output: no filler preambles, short sentences and paragraphs, active voice, scannable structure, concrete instructions. |
-| `iso-24495-2` | **Legal writing.** Extends the core skill for contracts, licences, and compliance text: standardised modal verbs, no legalese, named actors, structured conditional clauses, defined terms, cross-references that name what they point at, stable clause identifiers, a summary layer over the operative text, and section names a reader can navigate by. |
 | `iso-24495-3` | **Science and technical writing.** Extends the core skill for documentation, architecture, and code review: progressive disclosure, exact file citations, defined acronyms, text alternatives for diagrams, and the stages placed inside the document levels of `iso-24495-5`. |
 | `iso-24495-5` | **Document design (provisional).** Extends the core skill for structuring complex documents: an opening block, visual hierarchy, navigation aids, layered detail, comparisons, consistent signalling, and a signpost for the reader who wanted a different document. Ships a decision record, a runbook and a design document template. Based on the unpublished ISO/WD 24495-5 working draft. |
 | `iso-24495-code` | **Plain language in code.** Applies the principles to what a person reads in source: the order units appear in, their names, what comments say, and what an error tells the reader who hits it. Measured to change how Claude structures a file, at no cost to correctness. |
 
-The core skill activates the relevant writing skills automatically. It triggers `iso-24495-2` for legal content, `iso-24495-3` for technical content, and `iso-24495-5` for complex documents. A legal document always pairs with `iso-24495-5`, and a technical one does whenever its output is a document.
+The core skill activates the relevant writing skills automatically. It triggers `iso-24495-3` for technical content and `iso-24495-5` for complex documents. A legal document always pairs with `iso-24495-5`, and a technical one does whenever its output is a document.
 
 All skills exempt internal reasoning. The writing skills preserve code blocks, commands, and logs untouched; `iso-24495-code` is the exception, because governing code is its subject. Technical and legal accuracy always supersede formatting rules.
 
@@ -68,7 +67,7 @@ Put that in your project's `AGENTS.md` or in `~/.codex/AGENTS.md`. An `AGENTS.md
 
 ## Installation (Cursor)
 
-Cursor loads this repository as a plugin from `.cursor-plugin/plugin.json`. The manifest points at the five shared skills in `skills/`. Cursor has no output style, so `cursor/rules/iso-24495.mdc` is an always-on rule. Once the plugin is installed, it applies the output style to every response. A test keeps that rule identical to `claude/output-styles/iso-24495.md`.
+Cursor loads this repository as a plugin from `.cursor-plugin/plugin.json`. The manifest points at the four shared skills in `skills/`. Cursor has no output style, so `cursor/rules/iso-24495.mdc` is an always-on rule. Once the plugin is installed, it applies the output style to every response. A test keeps that rule identical to `claude/output-styles/iso-24495.md`.
 
 To try the plugin locally, copy this repository into `~/.cursor/plugins/local/iso-24495-plain-language`, then reload Cursor. A symlink to this repository is skipped, because Cursor only follows a symlink whose target stays inside that local folder.
 
@@ -76,7 +75,7 @@ Publishing is at [cursor.com/marketplace/publish](https://cursor.com/marketplace
 
 ## Usage
 
-Once installed, the agent loads the skills when their descriptions match the task. To apply one explicitly, ask for it by name, for example: "Apply `iso-24495-2` to this licence text."
+Once installed, the agent loads the skills when their descriptions match the task. To apply one explicitly, ask for it by name, for example: "Apply `iso-24495-5` to this contract."
 
 To enforce the core skill on every response, add a line to your agent's instruction file (`CLAUDE.md`, `AGENTS.md`, or equivalent):
 

@@ -6,7 +6,7 @@ All notable changes to the ISO 24495 Plain Language plugin. Versions follow [Sem
 
 ### Added
 
-- **A Cursor plugin.** `.cursor-plugin/plugin.json` loads the five shared skills. `cursor/rules/iso-24495.mdc` applies the output style to every response, and carries the same text as the style.
+- **A Cursor plugin.** `.cursor-plugin/plugin.json` loads the four shared skills. `cursor/rules/iso-24495.mdc` applies the output style to every response, and carries the same text as the style.
 - **Worked examples live in the skills.** The output style, the Codex style skill and the Cursor rule no longer carry them. Each writing skill holds its own examples, with the same note in front. Example 11 is also in document design, and example 18 is also in the core skill.
 
 ### Changed
@@ -18,6 +18,7 @@ All notable changes to the ISO 24495 Plain Language plugin. Versions follow [Sem
 - **The test suite and the GitHub Actions workflows.** The unit tests, the pinned-document snapshot, `scripts/check.sh`, and the workflows for tests, pull request text, release tags, and traffic snapshots are gone.
 - **The release preflight.** `scripts/release-preflight-cli.ts` and `scripts/release-versions.ts` are gone with the rest of the root `scripts` directory. This repository no longer checks that every version site agrees.
 - **The organisational skill and the text audit.** `iso-24495-4`, `iso-24495-text-audit`, the document checker they shared, and the local `.iso-24495-4` data are gone. The writing skills remain.
+- **The legal writing skill.** `iso-24495-2` is gone. Legal documents are covered by `iso-24495-5`.
 
 ## [0.7.0] - 2026-09-20
 
